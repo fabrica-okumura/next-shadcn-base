@@ -3,7 +3,7 @@
 このリポジトリは Next.js / TypeScript / shadcn/ui ベースでプロジェクト開発を始めるための初期セットアップ一式を提供します。初期セットアップと開発フローの概要を以下にまとめます。
 
 ## 必要バージョン
-- Node.js v18.11 以上（`node --watch` を利用するため）
+- Node.js v20.9 以上（LTS。Next.js 16 では Node.js 18 はサポート対象外）
 - npm （pnpm / Yarn は使用しません）
 
 ## 初期セットアップ
