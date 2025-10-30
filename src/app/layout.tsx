@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
 
-// import { PageHeader } from '@/components/shared/page-header'
+import { PageHeader } from '@/components/shared/page-header'
 
 export const metadata: Metadata = {
   title: 'サイトタイトル',
@@ -24,10 +24,8 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`font-sans ${notoSansJP.variable}`}>
-        {/* <PageHeader /> */}
-        <main>
-          {children}
-        </main>
+        <PageHeader />
+        <main>{children}</main>
       </body>
     </html>
   )

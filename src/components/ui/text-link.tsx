@@ -34,7 +34,7 @@ type LinkProps = LinkBaseProps &
     iconPosition?: "left" | "right"
   }
 
-const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
+const TextLink = React.forwardRef<HTMLAnchorElement, LinkProps>(
   (
     {
       className,
@@ -66,7 +66,7 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
   },
 )
 
-Link.displayName = "Link"
+TextLink.displayName = "TextLink"
 
-export { Link, linkVariants }
+export { TextLink, linkVariants }
 
