@@ -27,6 +27,8 @@
 - `any` の使用は避け、適切な型定義を行う
 - オブジェクトの形状を定義する際はまず `interface` を使用し、`interface` で表現できない型（Union 型など）のみ `type` を使用する
 - React Hooks やブラウザ API を利用するコンポーネントは必ずファイル先頭に `'use client'` を記述し、付け忘れによるビルドエラーを防ぐ
+- React 19 以降で非推奨となったユーティリティ型（例: `React.ElementRef`, `React.ElementType`）は使用せず、`React.ComponentRef` や `React.ComponentPropsWithRef` など現行推奨の型を選択する
+- 型定義やエディタの `@deprecated` 表示を必ず確認し、非推奨 API を採用しない
 
 ### CSS
 - Tailwind ユーティリティを基本とする
@@ -39,6 +41,8 @@
 - `/src/components/ui` は shadcn 由来の低レベル UI コンポーネントおよび全画面で再利用する共通 UI を配置する（`Heading` など独自実装でも、責務が低レベルならここで管理してよい）
 - `/src/components/shared` は複数画面・複数ドメインで横断的に利用する中レベルの再利用コンポーネント（フォームパーツ、共通カード、ユーティリティ的なレイアウトなど）をまとめる
 - `/src/components/<feature>`（例: `/src/components/dashboard`）は個別機能や特定ページに紐づくコンポーネント群を配置し、ビジネスロジックやデータ取得を含めても良い
+- shadcn 由来の UI コンポーネントは `React.forwardRef` と `@radix-ui/react-slot` を基本構造とし、`asChild` プロップで呼び出し側がタグを差し替えられるようにする
+- variant に基づいてデフォルトのタグやスタイルを決定する場合、`const fooMap = { ... } as const` を用いたマッピングを定義し、アクセシビリティ考慮したデフォルトタグを維持する
 
 ### アイコン
 - **重要**: `lucide-react` ではなく、`/public/icons/` にあるオリジナルアイコンを使用

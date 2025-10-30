@@ -114,7 +114,6 @@ function main() {
   ensureOutputDir(outputPath)
   fs.writeFileSync(outputPath, output, 'utf8')
 
-  // eslint-disable-next-line no-console
   console.log(
     `Generated icon definitions for ${entries.length} icons at ${path.relative(
       workspaceRoot,
