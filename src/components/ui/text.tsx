@@ -9,12 +9,12 @@ import { cn } from "@/lib/utils"
 const textVariants = cva("text-[var(--color-color-body-text)]", {
   variants: {
     size: {
-      xs: "text-[var(--font-size-usage-caption)]",
-      sm: "text-[var(--font-size-usage-parts-sm)]",
-      base: "text-[var(--font-size-usage-default)]",
-      lg: "text-[var(--font-size-usage-parts-md)]",
-      xl: "text-[var(--font-size-usage-parts-lg)]",
-      "2xl": "text-[var(--font-size-usage-title-sm)]",
+      xs: "text-[length:var(--font-size-usage-caption)]",
+      sm: "text-[length:var(--font-size-usage-parts-sm)]",
+      base: "text-[length:var(--font-size-usage-default)]",
+      lg: "text-[length:var(--font-size-usage-parts-md)]",
+      xl: "text-[length:var(--font-size-usage-parts-lg)]",
+      "2xl": "text-[length:var(--font-size-usage-title-sm)]",
     },
     lineHeight: {
       tight: "leading-[1.25]",
@@ -29,40 +29,26 @@ const textVariants = cva("text-[var(--color-color-body-text)]", {
   },
 })
 
-type TextElement = React.ComponentRef<"p">
-type SlotElement = React.ComponentRef<typeof Slot>
+function Text({
+  className,
+  size,
+  lineHeight,
+  asChild = false,
+  ...props
+}: React.ComponentProps<"p"> &
+  VariantProps<typeof textVariants> & {
+    asChild?: boolean
+  }) {
+  const Comp = asChild ? Slot : "p"
 
-type BaseTextProps = React.ComponentPropsWithoutRef<"p">
-
-type TextProps = BaseTextProps & VariantProps<typeof textVariants> & {
-  asChild?: boolean
+  return (
+    <Comp
+      data-slot="text"
+      className={cn(textVariants({ size, lineHeight }), className)}
+      {...props}
+    />
+  )
 }
-
-const Text = React.forwardRef<TextElement, TextProps>(
-  ({ className, size, lineHeight, asChild = false, ...props }, ref) => {
-    if (asChild) {
-      return (
-        <Slot
-          ref={ref as React.Ref<SlotElement>}
-          data-slot="text"
-          className={cn(textVariants({ size, lineHeight }), className)}
-          {...props}
-        />
-      )
-    }
-
-    return (
-      <p
-        ref={ref}
-        data-slot="text"
-        className={cn(textVariants({ size, lineHeight }), className)}
-        {...props}
-      />
-    )
-  },
-)
-
-Text.displayName = "Text"
 
 export { Text, textVariants }
 
