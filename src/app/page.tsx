@@ -75,6 +75,13 @@ import {
   NativeSelectOption,
 } from "@/components/ui/native-select"
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import {
   Pagination,
   PaginationContent,
   PaginationEllipsis,
@@ -129,6 +136,7 @@ const sections = [
   "Label",
   "Native Select",
   "Pagination",
+  "Select",
   "Radio Group",
   "Scroll Area",
   "Separator",
@@ -151,7 +159,7 @@ function getSectionId(sectionName: string) {
 export default function Home() {
   return (
     <main className="min-h-screen space-y-6 bg-(--usage-background) p-6">
-      <SectionContainer id="navigation" className="sticky top-[10rem] z-30">
+      <div id="navigation" className="bg-gray-200 p-5 sticky top-[10rem] z-30">
         <Heading variant="h2">
           コンポーネント一覧
         </Heading>
@@ -164,7 +172,7 @@ export default function Home() {
             ))}
           </Gap>
         </nav>
-      </SectionContainer>
+      </div>
 
       <SectionContainer id={getSectionId("Accordion")}>
         <Heading variant="h3">
@@ -609,6 +617,43 @@ export default function Home() {
         </NativeSelect>
       </SectionContainer>
 
+      <SectionContainer id={getSectionId("Select")}>
+        <Heading variant="h3">
+          Select
+        </Heading>
+        <Gap gap="sm">
+          <Select>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="選択してください" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="option1">オプション 1</SelectItem>
+              <SelectItem value="option2">オプション 2</SelectItem>
+              <SelectItem value="option3">オプション 3</SelectItem>
+            </SelectContent>
+          </Select>
+          <Select defaultValue="option2">
+            <SelectTrigger className="w-[180px]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="option1">オプション 1</SelectItem>
+              <SelectItem value="option2">オプション 2</SelectItem>
+              <SelectItem value="option3">オプション 3</SelectItem>
+            </SelectContent>
+          </Select>
+          <Select disabled>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="無効化されたセレクト" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="option1">オプション 1</SelectItem>
+              <SelectItem value="option2">オプション 2</SelectItem>
+            </SelectContent>
+          </Select>
+        </Gap>
+      </SectionContainer>
+
       <SectionContainer id={getSectionId("Pagination")}>
         <Heading variant="h3">
           Pagination
@@ -873,12 +918,8 @@ export default function Home() {
           Tooltip
         </Heading>
         <Tooltip>
-          <div className="bg-red-500">aaa</div>
           <TooltipTrigger asChild>
             <Button variant="outline">ホバーしてください</Button>
-          </TooltipTrigger>
-          <TooltipTrigger>
-            あああああああああああ
           </TooltipTrigger>
           <TooltipContent>
             <p>これはツールチップです</p>
