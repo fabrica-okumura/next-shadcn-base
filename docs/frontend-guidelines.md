@@ -72,6 +72,43 @@
 - タグ構造は必要最小限とし、不要な `div` や `span` を追加しない
 - 集客を目的とした SEO 重視のページではセマンティックなタグを厳守する
 
+### Next.js 16 の仕様
+- **非同期リクエストAPI**: `params`、`searchParams`、`cookies`、`headers` は非同期で取得する必要がある。ページやレイアウトコンポーネントでは `async` 関数として定義し、`await` を使用する
+  ```typescript
+  // ✅ 正しい例（Server Component）
+  export default async function Page({ params, searchParams }: Props) {
+    const { id } = await params;
+    const { query } = await searchParams;
+    // ...
+  }
+  
+  // ❌ 誤り（Next.js 15以前のパターン）
+  export default function Page({ params, searchParams }: Props) {
+    const { id } = params; // エラー
+    // ...
+  }
+  ```
+- **Client Componentでの非同期API**: Client Componentでは `React.use()` を使用して Promise を解決する
+  ```typescript
+  'use client';
+  import { use } from 'react';
+  
+  export default function ClientPage({ paramsPromise }: { paramsPromise: Promise<{ id: string }> }) {
+    const params = use(paramsPromise);
+    // ...
+  }
+  ```
+- **Cache Components**: 必要に応じて `use cache` ディレクティブを使用してコンポーネント単位でキャッシュを制御する。`next.config.ts` で `cacheComponents: true` を設定する必要がある
+  ```typescript
+  'use cache';
+  
+  export default async function CachedComponent() {
+    // このコンポーネントの出力はキャッシュされる
+  }
+  ```
+- **型生成**: `npx next typegen` を実行して非同期API用の型ヘルパーを自動生成できる
+- **React 19.2の機能**: View Transitions、`useEffectEvent` など、React 19.2の新機能を利用可能
+
 ## 4. デザイン・アクセシビリティ
 - Figma / Storybook で確認できる UI 仕様に合わせる。
 - アクセシビリティ: semantic HTML、ARIA 属性、フォーカス管理を厳守。
@@ -117,6 +154,11 @@
 ### 画像・リンクが正しく動作しない
 - `<img>` タグではなく `<Image>` コンポーネント（`next/image`）を使用しているか確認
 - `<a>` タグではなく `<Link>` コンポーネント（`next/link`）を使用しているか確認
+
+### Next.js 16関連のエラー
+- **`params` や `searchParams` が使えない**: Next.js 16では非同期APIに変更されているため、`await params` や `await searchParams` を使用する必要がある。ページコンポーネントは `async` 関数として定義する
+- **型エラーが出る**: `npx next typegen` を実行して非同期API用の型ヘルパーを生成する
+- **Cache Componentsが動作しない**: `next.config.ts` で `cacheComponents: true` が設定されているか確認する
 
 ---
 不明点はこのファイルに追記するか、関連ドキュメントへリンクを追加してください。
