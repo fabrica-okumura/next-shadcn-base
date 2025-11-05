@@ -6,6 +6,22 @@
 - Node.js v20.9 以上（LTS。Next.js 16 では Node.js 18 はサポート対象外）
 - npm （pnpm / Yarn は使用しません）
 
+## 開発環境
+
+このプロジェクトは **Cursor IDE** を前提として開発を行います。
+
+### MCP サーバー設定
+
+開発にあたり設定したMCPサーバーは以下の通りです：
+
+- **figma-desktop**: Figmaデザインファイルとの連携
+- **chrome-devtools**: ブラウザ開発者ツールとの連携
+- **next-devtools**: Next.js開発サーバーとの連携
+- **context7**: ライブラリドキュメント検索
+- **shadcn**: shadcn/uiコンポーネント検索・追加
+
+これらのMCPサーバーは開発支援AIが使用するためのツールを提供し、Figmaデザインの参照、ブラウザでの動作確認、Next.jsの診断、ライブラリドキュメントの検索、shadcn/uiコンポーネントの管理などを効率的に行えます。
+
 ## 初期セットアップ
 1. 依存関係をインストール: `npm install`
 2. 開発サーバーを起動: `npm run dev`
