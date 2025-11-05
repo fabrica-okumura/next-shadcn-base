@@ -99,7 +99,6 @@ import { toast } from "sonner"
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -268,14 +267,77 @@ export default function Home() {
         <Heading variant="h3">
           Button
         </Heading>
-        <Gap row wrap gap="sm">
-          <Button variant="default">Default</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="destructive">Destructive</Button>
-          <Button variant="ghost">Ghost</Button>
-          <Button variant="outline">Outline</Button>
-          <Button variant="link">Link</Button>
-        </Gap>
+        <div className="space-y-8">
+          <div>
+            <div className="mb-2 text-sm">Variant</div>
+            <Gap row wrap gap="sm">
+              <Button variant="default">Default</Button>
+              <Button variant="accent">Accent</Button>
+              <Button variant="neutral">Neutral</Button>
+              <Button variant="destructive">Destructive</Button>
+            </Gap>
+          </div>
+          <div>
+            <div className="mb-2 text-sm">Size</div>
+            <Gap row wrap gap="sm">
+              <Button size="default">Medium (M)</Button>
+              <Button size="sm">Small (S)</Button>
+            </Gap>
+          </div>
+          <div>
+            <div className="mb-2 text-sm">With Icon</div>
+            <Gap row wrap gap="sm">
+              <Button>
+                <Icon name="folder" />
+                フォルダ
+              </Button>
+              <Button variant="accent">
+                <Icon name="search" />
+                検索
+              </Button>
+              <Button variant="neutral">
+                <Icon name="plus" />
+                追加
+              </Button>
+              <Button variant="destructive">
+                削除
+                <Icon name="trashbox" />
+              </Button>
+            </Gap>
+          </div>
+          <div>
+            <div className="mb-2 text-sm">Icon Only</div>
+            <Gap row wrap gap="sm">
+              <Button size="icon">
+                <Icon name="search" />
+              </Button>
+              <Button size="icon-sm">
+                <Icon name="search" />
+              </Button>
+              <Button size="icon" variant="accent">
+                <Icon name="folder" />
+              </Button>
+              <Button size="icon-sm" variant="neutral">
+                <Icon name="plus" />
+              </Button>
+            </Gap>
+          </div>
+          <div>
+            <div className="mb-2 text-sm">Disabled</div>
+            <Gap row wrap gap="sm">
+              <Button disabled>Disabled</Button>
+              <Button variant="accent" disabled>
+                Disabled
+              </Button>
+              <Button variant="neutral" disabled>
+                Disabled
+              </Button>
+              <Button variant="destructive" disabled>
+                Disabled
+              </Button>
+            </Gap>
+          </div>
+        </div>
       </SectionContainer>
 
       <SectionContainer id={getSectionId("Card")}>
@@ -355,7 +417,7 @@ export default function Home() {
               </DialogDescription>
             </DialogHeader>
             <DialogFooter>
-              <Button variant="outline">キャンセル</Button>
+              <Button variant="neutral">キャンセル</Button>
               <Button>確認</Button>
             </DialogFooter>
           </DialogContent>
@@ -472,7 +534,7 @@ export default function Home() {
               <h6>
                 見出し 6
               </h6>
-              </Heading>
+            </Heading>
           </div>
         </Gap>
       </SectionContainer>
@@ -769,13 +831,13 @@ export default function Home() {
           </Button>
           <Button
             onClick={() => toast.info("情報をお知らせします")}
-            variant="secondary"
+            variant="neutral"
           >
             情報トースト
           </Button>
           <Button
             onClick={() => toast.warning("警告です")}
-            variant="outline"
+            variant="neutral"
           >
             警告トースト
           </Button>
@@ -809,7 +871,7 @@ export default function Home() {
           Table
         </Heading>
         <Table>
-          <TableCaption>サンプルテーブル</TableCaption>
+          {/* <TableCaption>サンプルテーブル</TableCaption> */}
           <TableHeader>
             <TableRow>
               <TableHead>名前</TableHead>
@@ -919,7 +981,7 @@ export default function Home() {
         </Heading>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="outline">ホバーしてください</Button>
+            <Button variant="neutral">ホバーしてください</Button>
           </TooltipTrigger>
           <TooltipContent>
             <p>これはツールチップです</p>

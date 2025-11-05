@@ -3,6 +3,7 @@ import { Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
 
 import { PageHeader } from '@/components/shared/page-header'
+import { PageTopButton } from '@/components/shared/page-top-button'
 import { Toaster } from '@/components/ui/sonner'
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body className={`font-sans ${notoSansJP.variable}`}>
         <PageHeader />
         <main>{children}</main>
+        <PageTopButton />
         <Toaster />
       </body>
     </html>
