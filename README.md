@@ -40,6 +40,13 @@
 - 自動生成を忘れてコミットしないよう、PR 作成前に差分がないか確認してください。
 
 ## CSS / デザイントークン運用
+
+### フォント設定
+
+デフォルトフォントとして **Noto Sans JP** を使用しています。`next/font/google` を使用して最適化されており、`src/app/globals.css` でフォールバックフォントとして「Hiragino Sans」「Hiragino Kaku Gothic ProN」「Helvetica Neue」を設定しています。
+
+### デザイントークン運用
+
 - Figma からエクスポートしたデザイントークンを `tokens/` ディレクトリに配置します。
 - トークン配置後は `node scripts/remove-japanese-tokens.mjs` を実行して余分な日本語ラベルを削除します。
 - CSS ビルドのため `npx style-dictionary build` を実行します（出力先: `src/app/variables.css`）。
@@ -66,7 +73,7 @@
 
 #### `docs/` ディレクトリ
 
-- **`docs/frontend-guidelines.md`**: フロントエンド開発に関する詳細なガイドライン。技術スタック（Next.js 16、React 19.2、TypeScript、Tailwind CSS v4など）、作業フロー、コーディング規約（TypeScript、CSS、コンポーネント、アイコン、画像・リンク、命名規則、HTML、Next.js 16の仕様）、デザイン・アクセシビリティ、Storybook/Docs、テスト、チェックリスト、トラブルシューティングなどを記載
+- **`docs/frontend-guidelines.md`**: フロントエンド開発に関する詳細なガイドライン。技術スタック、作業フロー、コーディング規約（TypeScript、CSS、コンポーネント、アイコン、画像・リンク、命名規則、HTML、Next.js 16の仕様）、デザイン・アクセシビリティ、Storybook/Docs、テスト、チェックリスト、トラブルシューティングなどを記載
 
 #### `.cursor/` ディレクトリ
 
