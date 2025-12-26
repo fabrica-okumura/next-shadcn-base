@@ -52,12 +52,6 @@
 - CSS ビルドのため `npx style-dictionary build` を実行します（出力先: `src/app/variables.css`）。
 - 最後に `node scripts/postprocess-design-tokens.mjs` を実行し、`variables.css` の rem 値を 1/10 に調整しつつ、`--master-` などのカスタムプレフィックスを通常の `--` に統一します。
 
-## Storybook 運用
-- UI 仕様の共有やレビューが必要な場合はストーリーファイル（`.stories.tsx`）を作成してください。
-- Storybook の起動コマンド: `npm run storybook`
-- 既存コンポーネントに対応する Story を作るときは、コンポーネントと同階層に生成する想定で `npm run create-story src/components/ui/button.tsx` のように実行します。
-- あるいは Storybook の UI から新規 Story を作成することも可能です。
-
 ## ドキュメント
 詳細なコーディング規約やデザインガイドラインは `docs/frontend-guidelines.md` を参照してください。
 
@@ -73,7 +67,7 @@
 
 #### `docs/` ディレクトリ
 
-- **`docs/frontend-guidelines.md`**: フロントエンド開発に関する詳細なガイドライン。技術スタック、作業フロー、コーディング規約（TypeScript、CSS、コンポーネント、アイコン、画像・リンク、命名規則、HTML、Next.js 16の仕様）、デザイン・アクセシビリティ、Storybook/Docs、テスト、チェックリスト、トラブルシューティングなどを記載
+- **`docs/frontend-guidelines.md`**: フロントエンド開発に関する詳細なガイドライン。技術スタック、作業フロー、コーディング規約（TypeScript、CSS、コンポーネント、アイコン、画像・リンク、命名規則、HTML、Next.js 16の仕様）、デザイン・アクセシビリティ、テスト、チェックリスト、トラブルシューティングなどを記載
 
 #### `.cursor/` ディレクトリ
 
