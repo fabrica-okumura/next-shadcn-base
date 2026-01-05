@@ -31,8 +31,14 @@
 - `npm run dev`: Next.js 開発サーバーを起動します。
 - `npm run build`: 本番ビルドを作成します。
 - `npm run lint`: Lint チェックを実行します。
+- `npm run storybook`: Storybook を起動します（ポート 6006）。
+- `npm run test:storybook`: Storybook の Story を Playwright ブラウザモードでテストします。
 - `npm run watch:icons`: `public/icons/*.svg` を監視し、変更があれば `src/components/ui/icon-definitions.ts` を再生成します。
 - `npm run generate:icons`: 手動でアイコン定義を再生成したい場合に実行します。
+
+### Storybook テスト実行メモ
+- 初回のみ `npx playwright install chromium` を実行してください。
+- テストは `npm run test:storybook` で実行できます（`vitest --run --project=storybook` が Playwright/Chromium で Story の `play` 関数を検証します）。
 
 ## アイコン運用
 - 新しい SVG アイコンは `public/icons/` に配置してください。
